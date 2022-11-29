@@ -49,10 +49,10 @@ class Model_Query
     return array();
   }
 
-  public function loadAll($table_name, $primary_key)
+  public function loadAll($table_name, $sortby, $direction = 'ASC')
   {
 
-    $sql = "SELECT * FROM $table_name ORDER BY `" . $primary_key . "`";
+    $sql = "SELECT * FROM $table_name ORDER BY `" . $sortby . "` " . $direction;
     return $this->query($sql);
   }
 } 

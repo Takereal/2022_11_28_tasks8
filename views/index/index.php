@@ -1,9 +1,19 @@
 <?php
 
-//print "\n" . '<br/><pre>';
-//print_r($tasks);
-//print '</pre><br/>' . "\n";
+$executor_dir = 'ASC';
+$deadline_dir = 'ASC';
+$donedate_dir = 'ASC';
+$status_dir = 'ASC';
+if (in_array($sortby, array('executor', 'deadline', 'donedate', 'status'))) {
 
+  if (!empty($sortdir) && 'ASC' == $sortdir) {
+
+    if ( 'executor' == $sortby) { $executor_dir = 'DESC'; }
+    elseif ( 'deadline' == $sortby) { $deadline_dir = 'DESC'; }
+    elseif ( 'donedate' == $sortby) { $donedate_dir = 'DESC'; }
+    elseif ( 'status' == $sortby) { $status_dir = 'DESC'; }
+  }
+}
 
 ?>
 <style>
@@ -38,10 +48,10 @@
      <div class="div-table-col" align="center">ID</div>
      <div class="div-table-col">Title</div>
      <div class="div-table-col">Description</div>
-     <div class="div-table-col">Executor</div>
-     <div class="div-table-col">Deadline</div>
-     <div class="div-table-col">Done Date</div>
-     <div class="div-table-col">Status</div>
+     <div class="div-table-col"><a href="?sortby=executor&sortdir=<?php print $executor_dir; ?>">Executor</a></div>
+     <div class="div-table-col"><a href="?sortby=deadline&sortdir=<?php print $deadline_dir; ?>">Deadline</a></div>
+     <div class="div-table-col"><a href="?sortby=donedate&sortdir=<?php print $donedate_dir; ?>">Done Date</a></div>
+     <div class="div-table-col"><a href="?sortby=status&sortdir=<?php print $status_dir; ?>">Status</a></div>
      <div class="div-table-col">&nbsp;</div>
      <div class="div-table-col">&nbsp;</div>
   </div>
